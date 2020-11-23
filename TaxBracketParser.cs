@@ -24,6 +24,8 @@ class TaxBracketParser {
                     bracket.rate = double.Parse(row[1]);
                     brackets.Add(bracket);
                 }
+                // This looks like a real error - you should throw this exception
+                // instead of ignoring it.
                 catch (System.FormatException)
                 {}                
             }

@@ -17,6 +17,7 @@ namespace payslip_taka
             var endDate = payslipInput.PromptEndDate();
             
             Employee employee = new Employee(name, surname, salary, superRate);
+            // Great work making the tax brackets configurable!
             TaxBracket[] taxBrackets = new TaxBracketParser().ParseCSV("/Users/Tom.vanDinther/Documents/payslip-kata/tax_brackets.csv"); //TODO: Use absolute path in Rider. Issue: Cannot run.
             PayslipFactory payslipFactory = PayslipFactory.GetInstance();
             payslipFactory.SetTaxBrackets(taxBrackets);
