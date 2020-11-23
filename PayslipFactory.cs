@@ -42,6 +42,13 @@ namespace payslip_kata
             return 12.0 / monthSpan;
         }
 
+        // This logic could be extracted to a 'tax calculator' class, which you could test
+        // directly rather than via the PayslipFactory. This will make more sense once you're
+        // familiar with TDD :)
+        // Additionally, my expectation of a factory is that it knows how to construct objects,
+        // but not about the business logic in those objects, such as tax calculation in this case.
+        // You could add a 'SetTaxCalculator' method on this factory, similar to what you've got
+        // for the tax brackets.
         private double CalculateTax(int salary)
         {
             double tax = 0;
@@ -72,7 +79,7 @@ namespace payslip_kata
 
         private string GetFullName(Employee employee)
         {
-            return $"{employee.GetName()} {employee.GetSurname()}";
+            return $"{employee.Name} {employee.GetSurname()}";
         }
 
         private int GetGrossIncome(Employee employee)
