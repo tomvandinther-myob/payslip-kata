@@ -87,18 +87,20 @@ namespace payslip_kata
             return this.CalculateTax(employee.GetAnnualSalary());
         }
 
+        // Is this method been called any where? 
         private int GetNetIncome(Employee employee)
             // Derived.
         {
             return this.GetGrossIncome(employee) - (int) Math.Ceiling(this.GetIncomeTax(employee));
         }
-
+        // Is this method been called any where? 
         private int GetSuperAmount(Employee employee)
             // Calculated.
         {
-            return (int) (this.GetGrossIncome(employee) * employee.GetSuperRate());
+            return (int) (this.GetGrossIncome(employee) * employee.SuperRate);
         }
-
+        
+        // I think the public method should be placed before private method. When the public method is called somewhere, we want to go and check what it is first, then if we need to know more what it does, then we can check the private methods are called in public method. You might want to checkout the order of members within a class eg: https://stackoverflow.com/questions/150479/order-of-items-in-classes-fields-properties-constructors-methods
         public Payslip GetPayslip(Employee employee)
         {
             Payslip payslip;
@@ -106,7 +108,7 @@ namespace payslip_kata
             payslip.grossIncome = (int) (this.GetGrossIncome(employee) / this.GetTimeDivision());
             payslip.incomeTax = (int) Math.Ceiling(this.GetIncomeTax(employee) / this.GetTimeDivision());
             payslip.netIncome = payslip.grossIncome - payslip.incomeTax;
-            payslip.superAmount = (int) (payslip.grossIncome * employee.GetSuperRate());
+            payslip.superAmount = (int) (payslip.grossIncome * employee.SuperRate);
 
             return payslip;
         }

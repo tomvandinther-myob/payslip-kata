@@ -6,11 +6,16 @@ class Employee {
     int annualSalary;
     double superRate;
 
+    // In C#, we can use property with getter & setter so that we don't need to create Get & Set method. eg: we can try with SuperRate
+    public double SuperRate {get; set;}
+    
+    // I think this constructor was created from the beginning but it's not in used now. Should it be removed?
     public Employee(string name, string surname) {
         this.name = name;
         this.surname = surname;
     }
 
+    // I think this constructor was created from the beginning but it's not in used now. Should it be removed?
     public Employee(string name, string surname, int annualSalary) {
         this.name = name;
         this.surname = surname;
@@ -22,8 +27,9 @@ class Employee {
         this.surname = surname;
         this.annualSalary = annualSalary;
         this.superRate = superRate;
+        SuperRate = superRate;
     }
-
+    
     public string GetName()
     {
         return this.name;
